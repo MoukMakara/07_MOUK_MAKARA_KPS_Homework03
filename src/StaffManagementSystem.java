@@ -255,18 +255,18 @@ public class StaffManagementSystem {
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + staff.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "$" +staff.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                 } else if (staff instanceof SalariedEmployee) {
                     SalariedEmployee se = (SalariedEmployee) staff;
                     table.addCell(StaffManagementSystem.YELLOW + "Salaried" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.id + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.name + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.address + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + se.getSalary() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + se.getBonus() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "$" + se.getSalary() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "$" + se.getBonus() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + se.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "$" + se.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                 } else if (staff instanceof HourlySalaryEmployee) {
                     HourlySalaryEmployee he = (HourlySalaryEmployee) staff;
                     table.addCell(StaffManagementSystem.YELLOW + "Hourly" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
@@ -275,14 +275,14 @@ public class StaffManagementSystem {
                     table.addCell(StaffManagementSystem.YELLOW + staff.address + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + he.getHoursWorked() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + he.getRate() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + he.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "$" + he.getHoursWorked() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "$" + he.getRate() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "$" + he.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                 } else {
                     table.addCell(StaffManagementSystem.YELLOW + "Unknown" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + staff.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "$" + staff.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                 }
             }
 
