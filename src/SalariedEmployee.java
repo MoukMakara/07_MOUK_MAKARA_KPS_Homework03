@@ -1,7 +1,3 @@
-import org.nocrala.tools.texttablefmt.BorderStyle;
-import org.nocrala.tools.texttablefmt.CellStyle;
-import org.nocrala.tools.texttablefmt.ShownBorders;
-import org.nocrala.tools.texttablefmt.Table;
 
 public class SalariedEmployee extends StaffMember {
     private double salary;
@@ -12,7 +8,6 @@ public class SalariedEmployee extends StaffMember {
         this.salary = salary;
         this.bonus = bonus;
     }
-
     @Override
     public double pay() {
         return salary + bonus;
@@ -26,10 +21,7 @@ public class SalariedEmployee extends StaffMember {
     public double getBonus() {
         return bonus;
     }
-    // setBonus
     public void setBonus(double newBonus) {
         this.bonus = newBonus;
     }
-
-
 }

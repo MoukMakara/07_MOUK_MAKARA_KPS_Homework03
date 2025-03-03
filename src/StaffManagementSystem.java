@@ -93,39 +93,46 @@ public class StaffManagementSystem {
                 employee = new Volunteer(nextId++, name, address, salary);
                 break;
             case 2: // Salaried Employee
-                System.out.print("Enter Salary: ");
+                System.out.print(BLUE + "Enter Salary: " +RESET);
                 double salary2 = ValidateInput.getDoubleInput();
-                System.out.print("Enter Bonus: ");
+                System.out.print(BLUE +"Enter Bonus: " +RESET);
                 double bonus = ValidateInput.getDoubleInput();
                 employee = new SalariedEmployee(nextId++, name, address, salary2, bonus);
                 break;
             case 3: // Hourly Employee
-                System.out.print("Enter Hours Worked: ");
+                System.out.print(BLUE +"Enter Hours Worked: " +RESET);
                 int hours = ValidateInput.getIntInput();
-                System.out.print("Enter Rate: ");
+                System.out.print(BLUE +"Enter Rate: " +RESET);
                 double rate = ValidateInput.getDoubleInput();
                 employee = new HourlySalaryEmployee(nextId++, name, address, hours, rate);
                 break;
             case 4:
                 return;
             default:
-                System.out.println("Invalid option");
+                System.out.println(RED +"Invalid option" +RESET);
                 return;
         }
 
         staffMembers.add(employee);
-        System.out.println("You added " + name + " of type " + (type == 1 ? "Volunteer" : (type == 2 ? "Salaried Employee" : "Hourly Employee")) + " successfully");
+        System.out.println(GREEN + "You added " + name + " of type " + (type == 1 ? "Volunteer" : (type == 2 ? "Salaried Employee" : "Hourly Employee")) + " successfully" +RESET);
     }
 
     public static void updateEmployee() {
-        System.out.println("===== Update Employee =====");
-        System.out.print("Enter or search by ID but cannot update id: ");
+        // table 2
+        Table table2 = new Table(1,  BorderStyle.UNICODE_BOX_DOUBLE_BORDER, ShownBorders.ALL);
+
+        table2.addCell( " Update Employee " , new CellStyle(CellStyle.HorizontalAlign.CENTER), 1);
+
+        table2.setColumnWidth(0, 100, 100);
+
+        System.out.println(PURPLE+ table2.render() +RESET);
+        System.out.print(BLUE + "Enter ID to update: " +RESET);
         int id = ValidateInput.getIntInput();
 
         Optional<StaffMember> staff = staffMembers.stream().filter(s -> s.id == id).findFirst();
 
         if (staff.isEmpty()) {
-            System.out.println("Employee not found.");
+            System.out.println(RED + "Employee not found." +RESET);
             return;
         }
 
@@ -135,71 +142,71 @@ public class StaffManagementSystem {
 
         int option = -1;
         if (employee instanceof Volunteer) {
-            System.out.println("Choose option to update\n1. Name 2. Address 3. Salary 4. Cancel");
-            System.out.print("Select an option to update: ");
+            System.out.println(BLUE + "Choose option to update\n1. Name 2. Address 3. Salary 4. Cancel" +RESET);
+            System.out.print(BLUE + "Select an option to update: " +RESET);
             option = ValidateInput.getIntInput();
         } else if (employee instanceof HourlySalaryEmployee) {
-            System.out.println("Choose option to update\n1. Name 2. Address 3. Hours Worked 4. Rate 0. Cancel");
-            System.out.print("Select an option to update: ");
+            System.out.println(BLUE +"Choose option to update\n1. Name 2. Address 3. Hours Worked 4. Rate 0. Cancel" +RESET);
+            System.out.print(BLUE + "Select an option to update: " +RESET);
             option = ValidateInput.getIntInput();
         } else if (employee instanceof SalariedEmployee) {
-            System.out.println("Choose option to update\n1. Name 2. Address 3. Salary 4. Bonus 0. Cancel");
-            System.out.print("Select an option to update: ");
+            System.out.println(BLUE +"Choose option to update\n1. Name 2. Address 3. Salary 4. Bonus 0. Cancel" +RESET);
+            System.out.print(BLUE + "Select an option to update: " +RESET);
             option = ValidateInput.getIntInput();
         }
 
         switch (option) {
             case 1:
-                System.out.print("Change name to: ");
-                String newName = ValidateInput.getStringInput(sc,"Name cannot be empty please input again.");
+                System.out.print(BLUE +"Change name to: " +RESET);
+                String newName = ValidateInput.getStringInput(sc,RED +"Name cannot be empty please input again." +RESET);
                 employee.name = newName;
-                System.out.println("Name has been updated successfully.");
+                System.out.println(GREEN + "Name has been updated successfully." +RESET);
                 break;
             case 2:
-                System.out.print("Change address to: ");
-                String newAddress = ValidateInput.getStringInput(sc,"Address cannot be empty.");
+                System.out.print(BLUE +"Change address to: " +RESET);
+                String newAddress = ValidateInput.getStringInput(sc,RED + "Address cannot be empty." +RESET);
                 employee.address = newAddress;
-                System.out.println("Address has been updated successfully.");
+                System.out.println(GREEN + "Address has been updated successfully." +RESET);
                 break;
             case 3:
                 if (employee instanceof Volunteer) {
-                    System.out.print("Change salary for Volunteer to: ");
+                    System.out.print(BLUE + "Change salary for Volunteer to: " +RESET);
                     double newSalary = ValidateInput.getDoubleInput();
-                    ((Volunteer) employee).setSalary(newSalary);  // Allow salary change for Volunteer
-                    System.out.println("Salary has been updated successfully for Volunteer.");
+                    ((Volunteer) employee).setSalary(newSalary);
+                    System.out.println(GREEN + "Salary has been updated successfully for Volunteer." +RESET);
                 } else if (employee instanceof HourlySalaryEmployee) {
-                    System.out.print("Change hours worked to: ");
+                    System.out.print(BLUE + "Change hours worked to: " +RESET);
                     int newHoursWorked = ValidateInput.getIntInput();
                     ((HourlySalaryEmployee) employee).setHoursWorked(newHoursWorked);
-                    System.out.println("Hours worked has been updated successfully.");
+                    System.out.println(GREEN + "Hours worked has been updated successfully." +RESET);
                 } else if (employee instanceof SalariedEmployee) {
-                    System.out.print("Change salary to: ");
+                    System.out.print(BLUE + "Change salary to: " +RESET);
                     double newSalary = ValidateInput.getDoubleInput();
                     ((SalariedEmployee) employee).setSalary(newSalary);
-                    System.out.println("Salary has been updated successfully.");
+                    System.out.println(GREEN + "Salary has been updated successfully." +RESET);
                 }
                 break;
 
             case 4:
                 if (employee instanceof HourlySalaryEmployee) {
-                    System.out.print("Change rate to: ");
+                    System.out.print(BLUE + "Change rate to: " +RESET);
                     double newRate = ValidateInput.getDoubleInput();
                     ((HourlySalaryEmployee) employee).setRate(newRate);
-                    System.out.println("Rate has been updated successfully.");
+                    System.out.println(GREEN + "Rate has been updated successfully." +RESET);
                 } else if (employee instanceof SalariedEmployee) {
-                    System.out.print("Change bonus to: ");
+                    System.out.print(BLUE + "Change bonus to: " +RESET);
                     double newBonus = ValidateInput.getDoubleInput();
                     ((SalariedEmployee) employee).setBonus(newBonus);
-                    System.out.println("Bonus has been updated successfully.");
+                    System.out.println(GREEN + "Bonus has been updated successfully." +RESET);
                 } else {
-                    System.out.println("No rate or bonus field to update for this employee type.");
+                    System.out.println(RED + "No rate or bonus field to update for this employee type." +RESET);
                 }
                 break;
             case 0:
-                System.out.println("Update cancelled.");
+                System.out.println(RED + "Update cancelled." +RESET);
                 break;
             default:
-                System.out.println("Invalid option.");
+                System.out.println(RED + "Invalid option." +RESET);
         }
 //        System.out.println(employee);
     }
@@ -237,20 +244,17 @@ public class StaffManagementSystem {
             table.addCell(StaffManagementSystem.CYAN + "Rate" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
             table.addCell(StaffManagementSystem.CYAN + "Payment" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
 
-            // Add each staff member's data as a row.
             for (int i = start; i < end; i++) {
                 StaffMember staff = staffMembers.get(i);
-                // Type-specific fields
                 if (staff instanceof Volunteer) {
                     table.addCell(StaffManagementSystem.YELLOW + "Volunteer" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    // Common field
                     table.addCell(StaffManagementSystem.YELLOW + staff.id + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.name + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.address + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + ((Volunteer) staff).getSalary() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                 } else if (staff instanceof SalariedEmployee) {
                     SalariedEmployee se = (SalariedEmployee) staff;
@@ -260,8 +264,8 @@ public class StaffManagementSystem {
                     table.addCell(StaffManagementSystem.YELLOW + staff.address + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + se.getSalary() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + se.getBonus() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + se.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                 } else if (staff instanceof HourlySalaryEmployee) {
                     HourlySalaryEmployee he = (HourlySalaryEmployee) staff;
@@ -269,25 +273,22 @@ public class StaffManagementSystem {
                     table.addCell(StaffManagementSystem.YELLOW + staff.id + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.name + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.address + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + he.getHoursWorked() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + he.getRate() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    // Common fields
                     table.addCell(StaffManagementSystem.YELLOW + he.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                 } else {
-                    // Fallback for any unknown type
                     table.addCell(StaffManagementSystem.YELLOW + "Unknown" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
-                    table.addCell(StaffManagementSystem.YELLOW + "N/A" + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
+                    table.addCell(StaffManagementSystem.YELLOW + "..." + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                     table.addCell(StaffManagementSystem.YELLOW + staff.pay() + StaffManagementSystem.RESET, new CellStyle(CellStyle.HorizontalAlign.CENTER));
                 }
             }
 
-            // Render the table and display it.
             System.out.println(table.render());
-            System.out.println("Page " + (currentPage + 1) + " / " + totalPages + "\t\t\t  1. First page  2. Next page  3. Previous page  4. Last page  5. Exit");
-            System.out.print("Choose: ");
+            System.out.println(PURPLE + "Page Number" + (currentPage + 1) + " / " + totalPages + "\t\t\t  1. First page  2. Next page  3. Previous page  4. Last page  5. Exit" +RESET);
+            System.out.print(BLUE + "Choose Option: " +RESET);
             int choice = ValidateInput.getIntInput();
 
             switch (choice) {
@@ -310,17 +311,24 @@ public class StaffManagementSystem {
                 case 5:
                     return;
                 default:
-                    System.out.println("Invalid choice!");
+                    System.out.println(RED + "Invalid choice!" +RESET);
             }
         } while (true);
     }
 
     public static void removeEmployee() {
-        System.out.println("===== Remove Employee =====");
-        System.out.print("Enter ID to remove: ");
+        // table 2
+        Table table2 = new Table(1,  BorderStyle.UNICODE_BOX_DOUBLE_BORDER, ShownBorders.ALL);
+
+        table2.addCell( " Remove Employee " , new CellStyle(CellStyle.HorizontalAlign.CENTER), 1);
+
+        table2.setColumnWidth(0, 100, 100);
+
+        System.out.println(PURPLE+ table2.render() +RESET);
+        System.out.print(BLUE + "Enter ID to remove: " +RESET);
         int id = ValidateInput.getIntInput();
 
-        System.out.print("Are you sure you want to delete this account? (Y/N): ");
+        System.out.print(BLUE + "Are you sure you want to delete this account? (Y/N): " +RESET);
         String confirmation = sc.nextLine().trim().toUpperCase();
 
         if (confirmation.equals("Y")) {
@@ -328,17 +336,14 @@ public class StaffManagementSystem {
 
             if (staff.isPresent()) {
                 staffMembers.remove(staff.get());
-                System.out.println("Removed successfully");
+                System.out.println(GREEN + "Removed successfully" +RESET);
             } else {
-                System.out.println("Employee not found.");
+                System.out.println(RED + "Employee not found." +RESET);
             }
         } else if (confirmation.equals("N")) {
-            System.out.println("Operation cancelled.");
+            System.out.println(RED + "Operation cancelled." +RESET);
         } else {
-            System.out.println("Invalid input, please enter Y or N.");
+            System.out.println(RED + "Invalid input, please enter Y or N." +RESET);
         }
     }
-
-
-
 }

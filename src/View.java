@@ -5,36 +5,6 @@ import org.nocrala.tools.texttablefmt.Table;
 
 public class View {
     public static void menu(){
-//        while (true) {
-//            System.out.println("========== StaffManagementSystem =============");
-//            System.out.println("1. Insert Employee (id auto increment)");
-//            System.out.println("2. Update Employee");
-//            System.out.println("3. Display Employee");
-//            System.out.println("4. Remove Employee");
-//            System.out.println("5. Exit");
-//            System.out.print("Choose an option: ");
-//            int option = ValidateInput.getIntInput();
-//
-//            switch (option) {
-//                case 1:
-//                    StaffManagementSystem.insertEmployee();
-//                    break;
-//                case 2:
-//                    StaffManagementSystem.updateEmployee();
-//                    break;
-//                case 3:
-//                    StaffManagementSystem.displayEmployee();
-//                    break;
-//                case 4:
-//                    StaffManagementSystem.removeEmployee();
-//                    break;
-//                case 5:
-//                    System.exit(0);
-//                    break;
-//                default:
-//                    System.out.println("Invalid option. Try again.");
-//            }
-//        }
         while (true) {
             System.out.println("\uD83C\uDFE6".repeat(65));
             Table table = new Table(3, BorderStyle.UNICODE_BOX_HEAVY_BORDER, ShownBorders.ALL);
@@ -75,9 +45,6 @@ public class View {
                         System.out.println(StaffManagementSystem.RED +"❌ Invalid choice, please choose a valid option." +StaffManagementSystem.RESET);
             }
         }
-    }
-    public static void displayStaff(){
-
     }
 }
 

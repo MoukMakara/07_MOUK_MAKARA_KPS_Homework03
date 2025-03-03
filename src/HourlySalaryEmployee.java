@@ -1,7 +1,3 @@
-import org.nocrala.tools.texttablefmt.BorderStyle;
-import org.nocrala.tools.texttablefmt.CellStyle;
-import org.nocrala.tools.texttablefmt.ShownBorders;
-import org.nocrala.tools.texttablefmt.Table;
 
 public class HourlySalaryEmployee extends StaffMember {
     private int hoursWorked;
@@ -29,5 +25,4 @@ public class HourlySalaryEmployee extends StaffMember {
     public int getHoursWorked() {
         return hoursWorked;
     }
-
 }

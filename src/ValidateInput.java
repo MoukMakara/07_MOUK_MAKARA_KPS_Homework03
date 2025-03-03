@@ -6,7 +6,7 @@ public class ValidateInput {
             try {
                 return Integer.parseInt(StaffManagementSystem.sc.nextLine());
             } catch (NumberFormatException e) {
-                System.out.print("Invalid input. Please enter a valid integer: ");
+                System.out.print(StaffManagementSystem.RED + "Invalid input. Please enter a valid integer: " + StaffManagementSystem.RESET);
             }
         }
     }
@@ -16,7 +16,7 @@ public class ValidateInput {
             try {
                 return Double.parseDouble(StaffManagementSystem.sc.nextLine());
             } catch (NumberFormatException e) {
-                System.out.print("Invalid input. Please enter a valid double: ");
+                System.out.print(StaffManagementSystem.RED + "Invalid input. Please enter a valid double: " + StaffManagementSystem.RESET);
             }
         }
     }
@@ -30,9 +30,8 @@ public class ValidateInput {
             input = sc.nextLine();
         }
 
-        // Regular expression to allow only alphabets (a-z, A-Z) and spaces
         while (!input.matches("[a-zA-Z ]+")) {
-            System.out.print("Invalid input. Only letters and spaces are allowed.");
+            System.out.print(StaffManagementSystem.RED + "Invalid input. Only letters and spaces are allowed." + StaffManagementSystem.RESET);
             input = sc.nextLine();
         }
         return input;
